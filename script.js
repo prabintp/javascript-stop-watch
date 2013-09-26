@@ -1,3 +1,10 @@
+/*genearal stopwatch in pure javascript
+ * version 1
+ * last updated: sep 26 2013
+ * file name:script.js
+ * author:prabintp@gmail.com 
+ */
+//class define the stopwatch
 var tpStopWatch= function(){
     var status = false,
     time = [[0],[0,0],[0,0],[0,0]];
@@ -40,16 +47,20 @@ var tpStopWatch= function(){
                 hour[0]=0;
             }
         }
+        //output of time to be shown
         output = hour[0]+':'+minute[0]+minute[1]+':'+second[0]+second[1]+'.'+msecond[0]+msecond[1];
         var time_space = document.getElementById('time');
         time_space.innerHTML=output;
     };
+    //to start the stopwatch
     this.cstart=function(){
         status = true;
     };
+    //to stop the stopwatch 
     this.cstop = function(){
         status = false;
     };
+    //to reset stopwatch
     this.creset = function(){
         time = [[0],[0,0],[0,0],[0,0]];
         this.cstop();
@@ -57,9 +68,10 @@ var tpStopWatch= function(){
     }
    
 };
+//create an object variable of class tpStopWatch
 var y = new tpStopWatch();
 var $time;
-	
+//loop for running the stopwatch, call when page onload	
 (function runLoop(){
     y.crun();
     setTimeout(runLoop,1000/100);
